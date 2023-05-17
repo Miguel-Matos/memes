@@ -7,6 +7,7 @@ export default function Form() {
   }
 
   const [currentMeme, setMeme] = useState('');
+  const [alt, setAlt] = useState('');
 
   function handleClick(e) {
     e.preventDefault();
@@ -14,8 +15,11 @@ export default function Form() {
     async function GetMemes() {
       const response = await fetch('https://api.imgflip.com/get_memes', {mode: 'cors'});
       const memeData = await response.json()
-        console.log(memeData.data.memes[imgSelect(100)].url)
-        setMeme(memeData.data.memes[imgSelect(100)].url);
+      let memeInfo = memeData.data.memes[imgSelect(100)]
+        let imgUrl = memeInfo.url;
+        let imgAlt = memeInfo.name;
+        setMeme(imgUrl);
+        setAlt(imgAlt);
     }
     
     GetMemes();
@@ -32,7 +36,7 @@ export default function Form() {
         </div>
         <button onClick={handleClick} type="submit">Get a random new meme!</button>
       </form>
-      <img src={currentMeme} className="meme" />
+      <img src={currentMeme} className="meme" alt={alt} />
     </main>
 
   )

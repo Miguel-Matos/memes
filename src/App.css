@@ -24,7 +24,8 @@ button {
 }
 .formLayout {
   display: flex;
-  justify-content: center;
+  flex-direction: column;
+  align-items: center;
   margin-top: 30px;
 }
 
@@ -48,4 +49,9 @@ input {
   font-size: large;
   border: 2px solid rgb(210, 209, 209);
   padding: 5px;
+}
+
+.meme {
+  max-width: 1000px;
+  width: 65%;
 }
